@@ -5,22 +5,171 @@
     <meta charset="utf-8">
     <title>Favorite fruit start</title>
     <style>
-      input:invalid {
+      input:required:invalid {
         border: 2px dashed red;
+        background-image: linear-gradient(to right, pink, lightgreen);
+        outline: none;
       }
 
-      input:valid {
+      /* input:required:invalid {
+        border: 2px solid red;
+        outline: none
+      } */
+
+      /* input:focus:invalid {
+        outline: none;
+      } */
+
+      /* .rest:focus {
+        outline: none;
+      } */
+
+      /* input:required:invalid {border: 2px solid red;} */
+      input:required:valid {
         border: 2px solid black;
+        /* outline: none; */
       }
+
+      /* input:required {
+        border: 2px solid red;
+      } */
+
+      /* input:valid {
+        border: 2px solid blue;
+      } */
     </style>
 </head>
 
 <body>
     <form>
       <label for="choose">Would you prefer a banana or a cherry?</label>
-      <input id="choose" name="i_like">
+      <input id="choose1" class="rest" name="i_like1" pattern = "[Bb]anana|[Cc]herry" required autofocus>
+      <label for="choose">Are you a person?</label>
+      <input id="choose2" name="i_like2" pattern="yes|no" required>
       <button>Submit</button>
     </form>
 </body>
+<script>
+  let input1 = document.getElementById('choose1');
+  let input2 = document.getElementById('choose2');
+  // input1.oninvalid = function(e) {
+  //   e.target.setCustomValidity('"Banana", "banana", "Cherry" or "cherry" allowed only')
+  // }
+  input1.oninput = function(event) {
+    if (input1.validity.patternMismatch) {
+      event.target.setCustomValidity('"Banana", "banana", "Cherry" or "cherry" allowed only')
+    } else {
+      event.target.setCustomValidity('');
+    }
+  }
+
+  // document.forms[0].addEventListener('invalid',function (e) {
+  //   e.preventDefault();
+  // },true);  
+
+  // input1.onblur = function (e) {
+  //   input1.reportValidity()
+  // }
+
+    // input1.onsubmit = function(e){
+    // document.querySelector("form").onclick = function(event){
+    // // input1.oninvalid = function(event){
+    //   // event.target.onblur();
+    //   if (input1.validity.patternMismatch) {
+    //     event.target.setCustomValidity('"Banana", "banana", "Cherry" or "cherry" allowed only')
+    //   } else {
+    //     event.target.setCustomValidity('');
+    //   }
+    //   // event.preventDefault();
+    //   // input1.reportValidity();
+    // };
+  // }
+  
+  input1.onkeydown = function(event){
+    // event.target.setCustomValidity('');
+    // if  (!event.shiftKey && !(event.key == "ArrowDown")) {
+    if  (!event.shiftKey && !(event.keyCode == 40)) {
+      event.target.blur();
+      event.target.focus();
+    }
+    // alert("Hi");
+    // event.preventDefault();
+    //event.target.reportValidity()
+    // event.target.onblur();
+    // if ( ! event.target.customError ) {
+    //   event.target.setCustomValidity('');
+    // }
+  };
+
+  // input1.onchange="try{setCustomValidity('')}catch(e){}"
+
+  // input2.oninvalid = function(e) {
+  //   e.target.setCustomValidity('Enter "yes or no" only')
+  // }
+
+  // either this
+  input2.oninput = function(e) {
+    if (input2.validity.patternMismatch) {
+      input2.setCustomValidity('Enter "yes or no" only')
+    } else {
+      e.target.setCustomValidity('');
+    }
+  }
+  // or this
+  // input2.addEventListener("input", function (event) {
+  //   if (input2.validity.patternMismatch) {
+  //     input2.setCustomValidity('Enter "yes or no" only');
+  //   } else {
+  //     input2.setCustomValidity("");
+  //   }
+  // });
+
+  input2.onkeydown = function(event){
+    if  (!event.shiftKey && !(event.keyCode == 40)) {
+      event.target.blur();
+      event.target.focus();
+    }
+  }
+  // const email = document.getElementById("mail");
+
+  // email.addEventListener("keydown", function (event) {
+  //   // event.target.setCustomValidity('');
+  //   // email.setCustomValidity('');
+  //   email.blur()
+  //   email.focus();
+  //   // document.querySelector("button").click();
+  //   // event.preventDefault();
+  //   // email.reportValidity();
+  //   // email.style.display="none"
+  // });
+
+  // email.addEventListener("input", function (event) {
+  //   if (email.validity.typeMismatch) {
+  //     email.setCustomValidity("I am expecting an e-mail address!");
+  //   } else {
+  //     email.setCustomValidity("");
+  //   }
+  // });
+
+
+  // https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement/setCustomValidity
+//   function validate(inputID) {
+//   const input = document.getElementById(inputID);
+//   const validityState = input.validity;
+
+//   if (validityState.valueMissing) {
+//     input.setCustomValidity('You gotta fill this out, yo!');
+//   } else if (validityState.rangeUnderflow) {
+//     input.setCustomValidity('We need a higher number!');
+//   } else if (validityState.rangeOverflow) {
+//     input.setCustomValidity('Thats too high!');
+//   } else {
+//     input.setCustomValidity('');
+//   }
+
+//   input.reportValidity();
+// }
+
+</script>
 
 </html>
