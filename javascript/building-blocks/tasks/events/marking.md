@@ -12,15 +12,15 @@ The HTML should not be changed; just the JavaScript.
 
 The finished code should look something like this:
 
-```
-let btn = document.querySelector('button');
+```js
+const btn = document.querySelector("button");
 
-btn.addEventListener('click', () => {
-  if(btn.className === 'on') {
-    btn.textContent = 'Machine is off';
+btn.addEventListener("click", () => {
+  if (btn.className === "on") {
+    btn.textContent = "Machine is off";
     btn.className = "off";
   } else {
-    btn.textContent = 'Machine is on';
+    btn.textContent = "Machine is on";
     btn.className = "on";
   }
 });
@@ -32,17 +32,16 @@ Now we'll look at keyboard events. To pass this assessment you need to build an 
 
 The finished code should look something like this:
 
-
-```
-let canvas = document.querySelector('canvas');
-let ctx = canvas.getContext('2d');
+```js
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
 
 function drawCircle(x, y, size) {
-  ctx.fillStyle = 'white';
+  ctx.fillStyle = "white";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.beginPath();
-  ctx.fillStyle = 'black';
+  ctx.fillStyle = "black";
   ctx.arc(x, y, size, 0, 2 * Math.PI);
   ctx.fill();
 }
@@ -55,18 +54,18 @@ drawCircle(x, y, size);
 
 // Add your code here
 
-window.addEventListener('keydown', (e) => {
-  switch(e.key) {
-    case 'a':
+window.addEventListener("keydown", (e) => {
+  switch (e.key) {
+    case "a":
       x -= 2;
       break;
-    case 'd':
+    case "d":
       x += 2;
       break;
-    case 'w':
+    case "w":
       y -= 2;
       break;
-    case 's':
+    case "s":
       y += 2;
       break;
   }
@@ -79,18 +78,18 @@ window.addEventListener('keydown', (e) => {
 
 Our final events-related task involves making use of bubbling and event objects. You need to set a click listener on the buttons' parent element, which when invoked by clicking any of the buttons will use `e.target` to grab the `data-color` attribute of the particular button that was clicked, and set the background of the `button-bar` to that color.
 
-You should be able to solve this without looping through all the buttons and giving each one their own event listener. 
+You should be able to solve this without looping through all the buttons and giving each one their own event listener.
 
 The code should look like this:
 
-```
-let buttonBar = document.querySelector('.button-bar');
+```js
+const buttonBar = document.querySelector(".button-bar");
 
-  // Add your code here
+// Add your code here
 
 function setColor(e) {
-  buttonBar.style.backgroundColor = e.target.getAttribute('data-color');
+  buttonBar.style.backgroundColor = e.target.getAttribute("data-color");
 }
 
-buttonBar.addEventListener('click', setColor);
+buttonBar.addEventListener("click", setColor);
 ```

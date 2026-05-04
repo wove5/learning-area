@@ -8,27 +8,27 @@ Note: We didn't provide live editable versions of these tasks because of the ris
 
 ## Task 1
 
-In our first looping task we want you start by creating a simple `for()` loop that goes through all the items in the provided `myArray` and prints them out on the screen inside list items, which are appended to the provided `list`. 
+In our first looping task we want you start by creating a simple `for...of` loop that goes through all the items in the provided `myArray` and prints them out on the screen inside list items, which are appended to the provided `list`.
 
-Note that using an array method like. `forEach()` would also be acceptable, as would a different loop. structure such as `while()`.
+Note that using a `for()` loop would also be acceptable, as would a different loop structure such as `while()`.
 
 The finished code should look something like this:
 
-```
-let myArray = ['tomatoes', 'chick peas', 'onions', 'rice', 'black beans'];
+```js
+const myArray = ["tomatoes", "chick peas", "onions", "rice", "black beans"];
 
-let list = document.createElement('ul');
+const list = document.createElement("ul");
 
-for(let i = 0; i < myArray.length; i++) {
-  let listItem = document.createElement('li');
-  listItem.textContent = myArray[i];
+for (let item of myArray) {
+  const listItem = document.createElement("li");
+  listItem.textContent = item;
   list.appendChild(listItem);
 }
 ```
 
 ## Task 2
 
-In this next task, we want you to write a simple program that, given a name, searches an array of objects containing names and emails (`phonebook`) and, if it finds the name, outputs the name and phone number and then uses `break` to exit the loop.  
+In this next task, we want you to write a simple program that, given a name, searches an array of objects containing names and emails (`phonebook`) and, if it finds the name, outputs the name and phone number and then uses `break` to exit the loop.
 
 If the name is not found, it lets the user know.
 
@@ -36,36 +36,32 @@ You should use a type of loop that you've not used in the previous task.
 
 The finished code should look something like this:
 
-```
-let name = 'Mustafa';
-let i = 0;
-let para = document.createElement('p');
+```js
+const name = "Mustafa";
+const para = document.createElement("p");
 
-let phonebook = [
-  { name : 'Chris', number : '1549' },
-  { name : 'Li Kang', number : '9634' },
-  { name : 'Anne', number : '9065' },
-  { name : 'Francesca', number : '3001' },
-  { name : 'Mustafa', number : '6888' },
-  { name : 'Tina', number : '4312' },
-  { name : 'Bert', number : '7780' },
-  { name : 'Jada', number : '2282' },
-]
+const phonebook = [
+  { name: "Chris", number: "1549" },
+  { name: "Li Kang", number: "9634" },
+  { name: "Anne", number: "9065" },
+  { name: "Francesca", number: "3001" },
+  { name: "Mustafa", number: "6888" },
+  { name: "Tina", number: "4312" },
+  { name: "Bert", number: "7780" },
+  { name: "Jada", number: "2282" },
+];
 
 // Add your code here
-
-do {
-  if(phonebook[i].name === name) {
-    para.textContent = `${ phonebook[i].name }'s number is ${ phonebook[i].number }.`;
+for (let i = 0; i < phonebook.length; i++) {
+  if (phonebook[i].name === name) {
+    para.textContent = `${phonebook[i].name}'s number is ${phonebook[i].number}.`;
     break;
   }
 
-  if(i === phonebook.length - 1) {
-    para.textContent = 'Name not found in the phonebook';
+  if (i === phonebook.length - 1) {
+    para.textContent = "Name not found in the phonebook";
   }
-
-  i++;
-} while(i < phonebook.length);
+}
 ```
 
 ## Task 3
@@ -76,7 +72,7 @@ You should use a type of loop that you've not used in the previous two tasks.
 
 The code should look something like this:
 
-```
+```js
 do {
   if (isPrime(i)) {
     para.textContent += `${i} `;
